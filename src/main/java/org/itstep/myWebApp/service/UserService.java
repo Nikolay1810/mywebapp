@@ -17,6 +17,8 @@ public class UserService {
         repository.delete(id);
     }
 
+    public User getUserById(Integer id){return repository.getUserById(id);}
+
     public void add(User user) {
         repository.add(user);
     }

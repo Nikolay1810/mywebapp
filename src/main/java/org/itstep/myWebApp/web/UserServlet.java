@@ -30,16 +30,25 @@ public class UserServlet extends HttpServlet {
         } else if (action.equals("create")) {
             req.setAttribute("user", new User("name", "lastname", "city", "email"));
             req.getRequestDispatcher("editUser.jsp").forward(req, resp);
+        } else if(action.equals("update")){
+            Integer id = Integer.valueOf(req.getParameter("id"));
+            User user = service.getUserById(id);
+            req.setAttribute("user", user);
+            req.getRequestDispatcher("editUser.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String lastname = req.getParameter("lastname");
-        String city = req.getParameter("city");
-        String email = req.getParameter("email");
-        service.add(new User(name, lastname, city, email));
+        if(!req.getParameter("id").isEmpty()) {
+            Integer id = Integer.valueOf(req.getParameter("id"));
+        }
+            String name = req.getParameter("name");
+            String lastname = req.getParameter("lastname");
+            String city = req.getParameter("city");
+            String email = req.getParameter("email");
+            service.add(new User(name, lastname, city, email));
+
 
         resp.sendRedirect("users");
     }

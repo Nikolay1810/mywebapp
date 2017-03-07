@@ -26,6 +26,14 @@ public class UserRepository {
         users.remove(id);
     }
 
+    public User getUserById(Integer id){
+        User user = users.get(id);
+        if(user == null){
+            return null;
+        }
+        return user;
+    }
+
     public void add(User user) {
         if (user.getId() == null) {
             user.setId(counter.getAndIncrement());

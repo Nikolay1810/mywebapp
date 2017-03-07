@@ -14,6 +14,7 @@
     <form method="post" action="users">
         <jsp:useBean id="user" scope="request" class="org.itstep.myWebApp.model.User"/>
         <dl>Name:</dl>
+        <dt><input type="text" hidden name="id" value="${user.id}"></dt>
         <dt><input type="text" name="name" value="${user.name}"></dt>
         <dl>Last name:</dl>
         <dt><input type="text" name="lastname" value="${user.lastname}"></dt>
