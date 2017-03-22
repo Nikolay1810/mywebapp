@@ -1,7 +1,8 @@
-package org.itstep.myWebApp.repository;
+package org.itstep.myWebApp.repository.Jdbc;
 
 import com.fasterxml.jackson.databind.BeanProperty;
 import org.itstep.myWebApp.model.User;
+import org.itstep.myWebApp.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
