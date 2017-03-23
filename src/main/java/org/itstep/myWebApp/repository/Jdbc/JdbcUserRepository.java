@@ -22,7 +22,7 @@ private JdbcTemplate jdbcTemplate;
 
 @Override
 public List<User> getAll(){
-    return jdbcTemplate.query("Select * from user", rowMapper);
+    return jdbcTemplate.query("Select * from users", rowMapper);
 }
 
     @Override
