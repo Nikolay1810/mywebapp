@@ -14,6 +14,9 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+
+
+
     <context:property-placeholder location="classpath:db/db.properties"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -22,6 +25,7 @@
         <property name="url" value="${database.url}"/>
         <property name="driverClassName" value="${database.driver}"/>
     </bean>
+
 
     <beans profile="jdbc">
         <context:component-scan base-package="org.itstep.myWebApp.repository.jdbc"/>
@@ -41,6 +45,16 @@
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource"
               p:packagesToScan="org.itstep.myWebApp.model">
+
+            <property name="jpaPropertyMap">
+                <map>
+                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="create-drop"/>
+
+                    <!--<entry key="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
+                    <!--<entry key="javax.persistence.schema-generation.scripts.create-target" value="D://kovalchuk/Projects/myWebApp/config/ddl/create.ddl"/>-->
+                    <!--<entry key="javax.persistence.schema-generation.scripts.create-target" value="D://kovalchuk/Projects/myWebApp/config/ddl/drop.ddl"/>-->
+                </map>
+            </property>
 
             <property name="jpaVendorAdapter">
                 <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
