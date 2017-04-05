@@ -1,10 +1,12 @@
 package org.itstep.myWebApp.model;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.context.annotation.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +26,9 @@ public class User extends BaseEntity {
     @Column(name = "email", unique = true)
     private String email;
 
+    public Set<Role> roles;
+    public  String password;
+    public boolean enubled;
 //    @OneToMany
 //    private List<Mail> mails;
 
